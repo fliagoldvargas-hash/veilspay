@@ -1,0 +1,167 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Veils Pay - Bridge API Docs</title>
+    <meta name="description" content="REST API documentation for private Solana bridge transfers.">
+    <link rel="icon" href="public/assets/veil-pay-logo.png">
+    <link rel="stylesheet" href="styles.css?v=bridge-only-docs">
+  </head>
+  <body class="docs-page">
+    <header class="app-nav">
+      <a class="brand" href="index.html" aria-label="Veils Pay home">
+        <img src="public/assets/veil-pay-logo.png" alt="Veils Pay">
+        <span>Veils Pay</span>
+      </a>
+      <nav class="app-links" aria-label="Product navigation">
+        <a href="bridge.html">Bridge</a>
+        <a class="active" href="docs.html" aria-current="page">Docs</a>
+      </nav>
+      <a class="home-pill" href="index.html">Home</a>
+    </header>
+
+    <main class="docs-shell">
+      <aside class="docs-toc">
+        <a href="#intro">Introduction</a>
+        <a href="#flow">Bridge Flow</a>
+        <a href="#endpoints">Endpoints</a>
+        <a href="#statuses">Statuses</a>
+        <a href="#errors">Errors</a>
+      </aside>
+
+      <article class="docs-content">
+        <section class="docs-hero reveal" id="intro">
+          <p class="eyebrow">REST API</p>
+          <h1>Veils Pay Bridge API</h1>
+          <p>Integrate private Solana bridge transfers into your own app, bot or wallet. Public bridge and stats endpoints require no API key.</p>
+        </section>
+
+        <section class="doc-card reveal">
+          <h2>Introduction</h2>
+          <p>The Veils Pay API is a small JSON REST API over HTTPS. All responses are JSON. Amounts are in SOL. Any HTTP client works.</p>
+          <div class="doc-grid two">
+            <div>
+              <h3>Base URL</h3>
+              <pre><code>https://api.veilpay.app</code></pre>
+              <p class="doc-note">The same endpoints are also reachable under <code>/api</code> on the main site.</p>
+            </div>
+            <div>
+              <h3>Authentication</h3>
+              <p>The public bridge and stats endpoints require no authentication. Admin endpoints are private and are not part of the public API.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="doc-card reveal" id="flow">
+          <h2>Bridge Flow</h2>
+          <ol class="doc-steps">
+            <li>POST <code>/bridge</code> with an amount and the user's destination address.</li>
+            <li>The API returns a fresh <code>depositAddress</code> and exact <code>depositSol</code>.</li>
+            <li>Have the user send exactly <code>depositSol</code> to <code>depositAddress</code>.</li>
+            <li>Poll GET <code>/bridge/:id</code> until <code>status</code> becomes <code>completed</code>, <code>refunded</code>, <code>expired</code>, or <code>failed</code>.</li>
+          </ol>
+          <p>The bridge fee is 0.5%, added on top. To bridge <code>amountSol</code>, the user sends <code>depositSol = amountSol * 1.005</code> and receives the full <code>amountSol</code>.</p>
+        </section>
+
+        <section class="doc-card reveal" id="endpoints">
+          <h2>Endpoints</h2>
+          <div class="endpoint">
+            <span>GET</span>
+            <strong>/stats</strong>
+            <p>Public network statistics.</p>
+          </div>
+          <pre><code>{
+  "bridges": 128,
+  "volumeSol": 342.5,
+  "fundingWallets": 47,
+  "feeBps": 50
+}</code></pre>
+
+          <div class="endpoint">
+            <span>GET</span>
+            <strong>/bridge/amounts</strong>
+            <p>The selectable bridge amounts and current fee.</p>
+          </div>
+          <pre><code>{
+  "amounts": [0.1, 0.5, 1, 5],
+  "feeBps": 50
+}</code></pre>
+
+          <div class="endpoint">
+            <span>POST</span>
+            <strong>/bridge</strong>
+            <p>Create a new bridge and get a fresh deposit address.</p>
+          </div>
+          <table class="doc-table">
+            <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td>amountSol</td><td>number</td><td>One of 0.1, 0.5, 1, 5. The amount the user receives.</td></tr>
+              <tr><td>destinationAddress</td><td>string</td><td>A valid Solana address that receives the clean payout.</td></tr>
+            </tbody>
+          </table>
+          <pre><code>curl -X POST https://api.veilpay.app/bridge \
+  -H "Content-Type: application/json" \
+  -d '{"amountSol": 5, "destinationAddress": "YourSolanaAddress..."}'</code></pre>
+          <pre><code>{
+  "id": "6a5789b02410f667baad5017",
+  "amountSol": 5,
+  "depositSol": 5.025,
+  "feeSol": 0.025,
+  "depositAddress": "7EG2FMkUM87V6a9NHmUkwdZWsc1zDgLJSWSzunoX1qJs",
+  "destinationAddress": "8rfY6XbZt33VJy6SPs9oWfeZdahZMhc2Z1cqRboAMhRh",
+  "status": "awaiting_deposit",
+  "expiresAt": "2026-07-15T14:22:56.690Z"
+}</code></pre>
+
+          <div class="endpoint">
+            <span>GET</span>
+            <strong>/bridge/:id</strong>
+            <p>Fetch the current status of a bridge. Poll this until terminal.</p>
+          </div>
+          <pre><code>{
+  "id": "6a5789b02410f667baad5017",
+  "amountSol": 5,
+  "depositSol": 5.025,
+  "feeSol": 0.025,
+  "status": "completed",
+  "depositedSol": 5.025,
+  "payoutSignature": "5x8...abc",
+  "refundSignature": null,
+  "senderAddress": null,
+  "error": null
+}</code></pre>
+        </section>
+
+        <section class="doc-card reveal" id="statuses">
+          <h2>Bridge Statuses</h2>
+          <table class="doc-table compact">
+            <tbody>
+              <tr><td>awaiting_deposit</td><td>Waiting for the user to send SOL to the deposit address.</td></tr>
+              <tr><td>paying_out</td><td>Deposit detected; a clean wallet is locked and payout is sent.</td></tr>
+              <tr><td>completed</td><td>Payout sent. See <code>payoutSignature</code>.</td></tr>
+              <tr><td>refunding</td><td>No clean wallet available; refund in progress.</td></tr>
+              <tr><td>refunded</td><td>Deposit returned. See <code>refundSignature</code>.</td></tr>
+              <tr><td>expired</td><td>No funds arrived before the deposit address expired.</td></tr>
+              <tr><td>failed</td><td>An error occurred; flagged for review.</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="doc-card reveal" id="errors">
+          <h2>Errors</h2>
+          <p>Errors return a non-2xx status with a JSON body.</p>
+          <pre><code>{ "error": "invalid destination address" }</code></pre>
+          <table class="doc-table compact">
+            <tbody>
+              <tr><td>400</td><td>Invalid amount or address.</td></tr>
+              <tr><td>404</td><td>Bridge not found.</td></tr>
+              <tr><td>500</td><td>Server error.</td></tr>
+            </tbody>
+          </table>
+        </section>
+      </article>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,70 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Veils Pay - Private Solana Bridge</title>
+    <meta name="description" content="Deposit fresh and receive clean SOL with Veils Pay private bridge.">
+    <link rel="icon" href="public/assets/veil-pay-logo.png">
+    <link rel="stylesheet" href="styles.css?v=bridge-functional">
+  </head>
+  <body class="bridge-page">
+    <header class="app-nav">
+      <a class="brand" href="index.html" aria-label="Veils Pay home">
+        <img src="public/assets/veil-pay-logo.png" alt="Veils Pay">
+        <span>Veils Pay</span>
+      </a>
+      <nav class="app-links" aria-label="Product navigation">
+        <a class="active" href="bridge.html" aria-current="page">Bridge</a>
+        <a href="docs.html">Docs</a>
+      </nav>
+      <a class="home-pill" href="index.html">Home</a>
+    </header>
+
+    <main class="bridge-main">
+      <section class="bridge-hero reveal">
+        <h1>Private Solana Bridge</h1>
+        <p>Deposit fresh, receive from a clean wallet.</p>
+      </section>
+
+      <section class="bridge-widget reveal" aria-label="Private bridge form">
+        <span class="corner tl"></span>
+        <span class="corner br"></span>
+        <div class="bridge-label-row">CHOOSE AMOUNT</div>
+        <div class="amount-grid">
+          <button class="amount active" type="button" data-amount="0.1"><strong>0.1</strong><span>SOL</span></button>
+          <button class="amount" type="button" data-amount="0.5"><strong>0.5</strong><span>SOL</span></button>
+          <button class="amount" type="button" data-amount="1"><strong>1</strong><span>SOL</span></button>
+          <button class="amount" type="button" data-amount="5"><strong>5</strong><span>SOL</span></button>
+        </div>
+        <div class="fee-note" data-fee-note>You send 0.1005 SOL (incl. 0.5% fee) and receive 0.1 SOL</div>
+
+        <label class="field-label" for="destination">DESTINATION ADDRESS</label>
+        <div class="address-field">
+          <span class="wallet-icon" aria-hidden="true"></span>
+          <input id="destination" type="text" placeholder="Where you receive your clean SOL..." autocomplete="off" spellcheck="false">
+        </div>
+
+        <button class="bridge-submit" type="button" disabled>Start private bridge</button>
+        <div class="bridge-glow"></div>
+        <div class="bridge-status" data-bridge-status aria-live="polite">
+          <div><span>Selected</span><strong data-summary-amount>0.1 SOL</strong></div>
+          <div><span>Fee</span><strong data-summary-fee>0.0005 SOL</strong></div>
+          <div><span>You receive</span><strong data-summary-receive>0.1 SOL</strong></div>
+        </div>
+
+        <div class="assurances" aria-label="Bridge assurances">
+          <span>Noncustodial</span>
+          <span>No signup</span>
+          <span>Fresh address</span>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bridge-footer">
+      <nav><a href="docs.html">Docs</a></nav>
+      <p>Veils Pay is a noncustodial privacy protocol. Nothing here is financial advice. Crypto is volatile and onchain transactions are irreversible. Use at your own risk. © 2026 Veils Pay.</p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

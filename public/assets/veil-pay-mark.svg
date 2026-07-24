@@ -1,0 +1,22 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Veils Pay mark</title>
+  <desc id="desc">Minimal orange V monogram with clean separated bridge cuts.</desc>
+  <rect width="512" height="512" rx="88" fill="#020203"/>
+  <defs>
+    <linearGradient id="veil-main" x1="170" y1="86" x2="346" y2="430" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF7A08"/>
+      <stop offset=".58" stop-color="#FF5B08"/>
+      <stop offset="1" stop-color="#F24A00"/>
+    </linearGradient>
+    <linearGradient id="veil-depth" x1="215" y1="184" x2="284" y2="322" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#C93600" stop-opacity=".06"/>
+      <stop offset="1" stop-color="#A82F00" stop-opacity=".38"/>
+    </linearGradient>
+  </defs>
+  <path d="M84 94H171C198 94 222 110 234 135L318 314C331 342 316 376 286 386C260 395 231 383 219 358L84 94Z" fill="url(#veil-main)"/>
+  <path d="M219 358L336 120C344 104 360 94 378 94H428L288 378C275 405 236 403 226 375L219 358Z" fill="url(#veil-main)"/>
+  <path d="M244 306L318 314C331 342 316 376 286 386C260 395 231 383 219 358L244 306Z" fill="url(#veil-depth)"/>
+  <path d="M354 94H428L403 144C396 159 381 168 364 168H314L337 121C340 114 346 101 354 94Z" fill="url(#veil-main)"/>
+  <path d="M305 198H382L367 229C361 241 349 248 336 248H285L294 228C297 219 300 207 305 198Z" fill="url(#veil-main)"/>
+  <path d="M276 275H344L335 294C329 307 316 315 302 315H257L264 299C267 290 270 281 276 275Z" fill="url(#veil-main)"/>
+</svg>
