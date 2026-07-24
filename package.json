@@ -1,0 +1,8 @@
+{
+  "name": "veilspay",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build-config.mjs && node scripts/prepare-vercel-output.mjs"
+  }
+}

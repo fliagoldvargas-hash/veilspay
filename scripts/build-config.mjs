@@ -34,8 +34,9 @@ const sourcePath = existsSync(envPath) ? envPath : examplePath;
 const env = parseEnv(readFileSync(sourcePath, "utf8"));
 
 const config = {
-  tokenSymbol: env.VEIL_PAY_TOKEN_SYMBOL || "$VEIL",
+  tokenSymbol: process.env.VEIL_PAY_TOKEN_SYMBOL || env.VEIL_PAY_TOKEN_SYMBOL || "$VEIL",
   contractAddress:
+    process.env.VEIL_PAY_CONTRACT_ADDRESS ||
     env.VEIL_PAY_CONTRACT_ADDRESS ||
     "Ds28wMScEFn1ztgwKYM1m2d2Qse6p6jXJhW6KpZppump",
 };
