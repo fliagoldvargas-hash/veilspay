@@ -3,6 +3,7 @@ import { resolve } from "node:path";
 
 const envPath = resolve(".env");
 const examplePath = resolve(".env.example");
+const contractAddressPath = resolve("config", "CONTRACT_ADDRESS.txt");
 
 const parseEnv = (source) => {
   const values = {};
@@ -32,11 +33,15 @@ const parseEnv = (source) => {
 
 const sourcePath = existsSync(envPath) ? envPath : examplePath;
 const env = parseEnv(readFileSync(sourcePath, "utf8"));
+const contractAddressFromFile = existsSync(contractAddressPath)
+  ? readFileSync(contractAddressPath, "utf8").trim()
+  : "";
 
 const config = {
   tokenSymbol: process.env.VEIL_PAY_TOKEN_SYMBOL || env.VEIL_PAY_TOKEN_SYMBOL || "$VEIL",
   contractAddress:
     process.env.VEIL_PAY_CONTRACT_ADDRESS ||
+    contractAddressFromFile ||
     env.VEIL_PAY_CONTRACT_ADDRESS ||
     "Ds28wMScEFn1ztgwKYM1m2d2Qse6p6jXJhW6KpZppump",
 };
