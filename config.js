@@ -1,4 +1,4 @@
 window.VEIL_PAY_CONFIG = {
-  "tokenSymbol": "$VEIL",
+  "tokenSymbol": "$GHOST",
   "contractAddress": "Ds28wMScEFn1ztgwKYM1m2d2Qse6p6jXJhW6KpZppump"
 };
