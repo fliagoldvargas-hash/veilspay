@@ -1,7 +1,7 @@
 # Behavior Notes
 
 - Target: https://www.albatrossprotocol.com
-- Brand replacement: visible source-brand naming is rendered as Veils Pay.
+- Brand replacement: visible source-brand naming is rendered as Ghost Protocol.
 - Header: fixed at the top, black translucent surface, thin bottom border, nav hover fades to white.
 - Bridge links: any Bridge/Open the bridge action opens https://www.albatrossprotocol.com/bridge.
 - Primary buttons: orange pill, hover lifts slightly and brightens.

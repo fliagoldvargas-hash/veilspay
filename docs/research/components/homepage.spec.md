@@ -13,7 +13,7 @@
 - Shape language: large pill CTAs, 18-28px dark cards, thin violet/white borders.
 
 ## Text Content
-All visible page content was copied from the original accessibility tree, with source-brand naming renamed to Veils Pay.
+All visible page content was copied from the original accessibility tree, with source-brand naming renamed to Ghost Protocol.
 
 ## Responsive Behavior
 - Desktop: nav centered, hero two columns, product/roadmap grids.

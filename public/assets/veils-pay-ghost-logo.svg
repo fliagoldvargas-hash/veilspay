@@ -1,0 +1,23 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Ghost Protocol ghost logo</title>
+  <desc id="desc">Minimal orange ghost mark for Ghost Protocol.</desc>
+  <defs>
+    <linearGradient id="ghost-orange" x1="156" y1="72" x2="356" y2="444" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF8A12"/>
+      <stop offset=".58" stop-color="#FF5B08"/>
+      <stop offset="1" stop-color="#E84600"/>
+    </linearGradient>
+    <linearGradient id="ghost-depth" x1="184" y1="182" x2="354" y2="394" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF" stop-opacity=".16"/>
+      <stop offset="1" stop-color="#6E1600" stop-opacity=".22"/>
+    </linearGradient>
+  </defs>
+  <path d="M108 424V214C108 130 174 68 256 68C338 68 404 130 404 214V424C404 440 386 449 373 440L342 419L311 440C302 446 290 446 281 440L256 423L231 440C222 446 210 446 201 440L170 419L139 440C126 449 108 440 108 424Z" fill="url(#ghost-orange)"/>
+  <path d="M108 424V214C108 130 174 68 256 68C338 68 404 130 404 214V424C404 440 386 449 373 440L342 419L311 440C302 446 290 446 281 440L256 423L231 440C222 446 210 446 201 440L170 419L139 440C126 449 108 440 108 424Z" fill="url(#ghost-depth)"/>
+  <path d="M160 306C160 272 187 245 221 245H291C325 245 352 272 352 306C326 320 295 328 256 328C217 328 186 320 160 306Z" fill="#0A0708" fill-opacity=".9"/>
+  <circle cx="211" cy="206" r="24" fill="#0A0708"/>
+  <circle cx="301" cy="206" r="24" fill="#0A0708"/>
+  <circle cx="220" cy="198" r="7" fill="#FFB066"/>
+  <circle cx="310" cy="198" r="7" fill="#FFB066"/>
+  <path d="M148 157C170 113 210 90 256 90C302 90 342 113 364 157" stroke="#FFB066" stroke-opacity=".36" stroke-width="16" stroke-linecap="round"/>
+</svg>

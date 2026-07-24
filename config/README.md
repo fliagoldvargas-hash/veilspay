@@ -1,4 +1,4 @@
-# Veils Pay Config
+# Ghost Protocol Config
 
 Para cambiar el CA que aparece en la web, abrí:
 

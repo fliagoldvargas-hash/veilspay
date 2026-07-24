@@ -38,7 +38,7 @@ const contractAddressFromFile = existsSync(contractAddressPath)
   : "";
 
 const config = {
-  tokenSymbol: process.env.VEIL_PAY_TOKEN_SYMBOL || env.VEIL_PAY_TOKEN_SYMBOL || "$VEIL",
+  tokenSymbol: process.env.VEIL_PAY_TOKEN_SYMBOL || env.VEIL_PAY_TOKEN_SYMBOL || "$GHOST",
   contractAddress:
     process.env.VEIL_PAY_CONTRACT_ADDRESS ||
     contractAddressFromFile ||

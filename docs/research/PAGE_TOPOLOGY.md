@@ -8,6 +8,6 @@
 6. Hatchery feature panel with terminal-style study feed.
 7. Feature sections: cross-chain swaps, privacy bridge, ghost links, privacy launchpad.
 8. Developer/API panel.
-9. Veils Pay preview panel.
+9. Ghost Protocol preview panel.
 10. Roadmap grid.
 11. Final CTA and footer.

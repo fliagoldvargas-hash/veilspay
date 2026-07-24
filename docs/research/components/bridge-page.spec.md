@@ -30,4 +30,4 @@
 - Noncustodial, No signup, Fresh address
 
 ## Brand Replacement
-- Source-brand visible strings are rendered as Veils Pay.
+- Source-brand visible strings are rendered as Ghost Protocol.
